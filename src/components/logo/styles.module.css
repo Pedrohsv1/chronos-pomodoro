@@ -1,6 +1,28 @@
 .logo {
-  width: 100px;
-  height: 100px;
   margin: 0 auto;
   display: block;
+}
+
+.logoLink {
+  color: var(--primary);
+
+  font-size: xx-large;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  flex-direction: column;
+
+  transition: color 0.2s;
+}
+
+.logoLink:hover {
+  color: var(--link-hover);
+}
+
+.logoIcon {
+  width: 6.4rem;
+  height: 6.4rem;
 }
