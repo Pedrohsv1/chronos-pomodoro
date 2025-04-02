@@ -1,23 +1,23 @@
-import { BugIcon, GaugeCircle, Table2Icon, TimerIcon } from 'lucide-react';
-import { ButtonIcon } from '../button';
+import { HistoryIcon, HomeIcon, Settings2Icon, SunIcon } from 'lucide-react';
+import { LinkIcon } from '../button';
 
 import styles from './styles.module.css';
 
 export function Menu() {
   return (
-    <div className={styles.menu}>
-      <ButtonIcon>
-        <TimerIcon />
-      </ButtonIcon>
-      <ButtonIcon>
-        <Table2Icon />
-      </ButtonIcon>
-      <ButtonIcon>
-        <GaugeCircle />
-      </ButtonIcon>
-      <ButtonIcon>
-        <BugIcon />
-      </ButtonIcon>
-    </div>
+    <nav className={styles.menu}>
+      <LinkIcon href=''>
+        <HomeIcon />
+      </LinkIcon>
+      <LinkIcon href=''>
+        <HistoryIcon />
+      </LinkIcon>
+      <LinkIcon href=''>
+        <Settings2Icon />
+      </LinkIcon>
+      <LinkIcon href=''>
+        <SunIcon />
+      </LinkIcon>
+    </nav>
   );
 }
