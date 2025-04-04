@@ -6,9 +6,11 @@ A minimalist Pomodoro timer application to help you stay focused and manage your
 
 - 25-minute work timer
 - 5-minute short break timer
+- 15-minute long break timer
 - Simple and clean interface
 - Start, pause, and reset functionality
 - Visual and audio notifications when timer completes
+- History
 
 ## Technologies Used
 
@@ -20,7 +22,7 @@ A minimalist Pomodoro timer application to help you stay focused and manage your
 
 1. Clone the repository:
 ```bash
-git clone [your-repository-url]
+git clone [https://github.com/Pedrohsv1/chronos-pomodoro.git]
 ```
 
 2. Install dependencies:
@@ -55,10 +57,7 @@ src/
 
 Contributions are welcome! Feel free to submit a Pull Request.
 
-## License
-
-This project is licensed under the MIT License
-
 ## Screenshots
 
 [You can add screenshots of your Pomodoro app here]
+ 
