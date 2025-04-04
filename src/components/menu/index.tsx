@@ -1,5 +1,5 @@
 import { HistoryIcon, HomeIcon, Settings2Icon, SunIcon } from 'lucide-react';
-import { LinkIcon } from '../button';
+import { LinkIcon } from '../linkIcon';
 
 import styles from './styles.module.css';
 

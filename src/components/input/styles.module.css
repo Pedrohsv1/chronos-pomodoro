@@ -1,14 +1,39 @@
 .label {
-
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--color-text);
 }
 
 .input {
+  height: 4rem;
+  width: 22rem;
 
+  padding: 1rem 2rem;
+
+  border-radius: 1rem;
+  border: 0.1rem solid var(--gray-400);
+
+  background-color: transparent;
+  color: var(--color-text);
+
+  transition: all 0.1s ease-in-out;
 }
 
-.container {
-  display: flex;
-  flex-direction: horizontal;
+.input:focus {
+  outline: var(--primary) solid 0.2rem;
+  outline-offset: 0.2rem;
 
-  gap: 2rem;
+  border-color: var(--gray-200);
+}
+
+.input:disabled {
+  background-color: var(--gray-800);
+  border-color: var(--disabled);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.input:placeholder-shown {
+  color: var(--gray-500);
+  font-style: italic;
 }

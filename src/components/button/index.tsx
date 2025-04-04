@@ -1,14 +1,19 @@
 import type { ComponentProps } from 'react';
 import styles from './styles.module.css';
 
-type LinkIconProps = ComponentProps<'a'> & {
+type ButtonProps = ComponentProps<'button'> & {
   children: React.ReactNode;
+  variant?: 'primary' | 'destructive';
 };
 
-export function LinkIcon({ children, ...props }: LinkIconProps) {
+export function Button({
+  variant = 'primary',
+  children,
+  ...props
+}: ButtonProps) {
   return (
-    <a {...props} className={styles.linkIcon}>
+    <button {...props} className={`${styles.button} ${styles[variant]}`}>
       {children}
-    </a>
+    </button>
   );
 }
