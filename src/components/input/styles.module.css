@@ -1,0 +1,14 @@
+.label {
+
+}
+
+.input {
+
+}
+
+.container {
+  display: flex;
+  flex-direction: horizontal;
+
+  gap: 2rem;
+}
