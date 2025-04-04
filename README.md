@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# Simple Pomodoro Timer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A minimalist Pomodoro timer application to help you stay focused and manage your work sessions effectively.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 25-minute work timer
+- 5-minute short break timer
+- Simple and clean interface
+- Start, pause, and reset functionality
+- Visual and audio notifications when timer completes
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React
+- CSS for styling
+- JavaScript for timer logic
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation
+
+1. Clone the repository:
+```bash
+git clone [your-repository-url]
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Install dependencies:
+```bash
+npm install
 ```
+
+3. Start the application:
+```bash
+npm run dev
+```
+
+## How to Use
+
+1. Click the "Start" button to begin a 25-minute work session
+2. Work until the timer ends
+3. Take a 5-minute break when the work session ends
+4. Repeat the cycle
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── buttom - index.tsx & styles.modules.css
+│   └── menu - index.tsx & styles.modules.css
+├── pages/
+└── App.tsx
+```
+
+## Contributing
+
+Contributions are welcome! Feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License
+
+## Screenshots
+
+[You can add screenshots of your Pomodoro app here]
