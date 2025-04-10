@@ -10,7 +10,7 @@ export function TaskForm() {
     <form action='' className={styles.form}>
       <div className={styles.formRow}>
         <p>
-          Let's <strong>focus</strong> in the goals!
+          Vamos <strong>concentrar</strong> em nossos objetivos!
         </p>
       </div>
       <div className={styles.formRow}>
@@ -20,8 +20,8 @@ export function TaskForm() {
       <div className={styles.formRow}>
         <DefaultInput
           id='taskpomodoro'
-          labelText='Task'
-          placeholder='What are you going to do?'
+          labelText='Atividade'
+          placeholder='O que você vai fazer?'
         />
       </div>
 
