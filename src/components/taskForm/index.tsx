@@ -6,17 +6,12 @@ import { DefaultInput } from '../input';
 import styles from './styles.module.css';
 
 export function TaskForm() {
-  return (
-    <form action='' className={styles.form}>
-      <div className={styles.formRow}>
-        <p>
-          Vamos <strong>concentrar</strong> em nossos objetivos!
-        </p>
-      </div>
-      <div className={styles.formRow}>
-        <Cycles />
-      </div>
+  function handleCreateTask(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+  }
 
+  return (
+    <form action='' onSubmit={handleCreateTask} className={styles.form}>
       <div className={styles.formRow}>
         <DefaultInput
           id='taskpomodoro'
@@ -26,7 +21,17 @@ export function TaskForm() {
       </div>
 
       <div className={styles.formRow}>
-        <Button type='button' variant='primary'>
+        <p>
+          Vamos <strong>concentrar</strong> em nossos objetivos!
+        </p>
+      </div>
+
+      <div className={styles.formRow}>
+        <Cycles />
+      </div>
+
+      <div className={styles.formRow}>
+        <Button type='submit' variant='primary'>
           <Play />
         </Button>
       </div>
