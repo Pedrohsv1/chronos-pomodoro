@@ -19,14 +19,14 @@
   border-radius: 2rem;
 }
 
-.workTime {
+.worktime {
   background-color: var(--primary);
 }
 
-.pauseTime {
+.shortbreaktime {
   background-color: var(--gray-400);
 }
 
-.longPauseTime {
+.longbreaktime {
   background-color: var(--gray-300);
 }

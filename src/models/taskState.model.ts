@@ -10,7 +10,7 @@ export type TaskStateModel = {
 
   config: {
     worktime: number;
-    breaktime: number;
+    shortbreaktime: number;
     longbreaktime: number;
   };
 };
