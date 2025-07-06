@@ -10,14 +10,17 @@ import styles from './styles.module.css';
 import { useTaskContext } from '../../contexts/taskcontext/index.tsx';
 import { getNextCycle } from '../../utils/getnextcycle.ts';
 import { getNextCycleType } from '../../utils/getnextcycletype.ts';
-import { formatSecondsToMinutes } from '../../utils/formatsecondstominutes.ts';
+import { TaskActionTypes } from '../../contexts/taskcontext/taskAction.ts';
+import { Tips } from '../tips/index.tsx';
+import { showToast } from '../../adapters/showToast.ts';
 
 export function TaskForm() {
-  const { state, setState } = useTaskContext();
+  const { state, dispatch } = useTaskContext();
 
   const nextCycle = getNextCycle(state.currentCycle);
   const nextCycleType = getNextCycleType(nextCycle);
   const taskInput = useRef<HTMLInputElement>(null);
+  const defaultValue = state.tasks[state.tasks.length - 1]?.name || '';
 
   function handleCreateTask(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,8 +30,10 @@ export function TaskForm() {
     const taskName = taskInput.current.value.trim();
 
     if (!taskName) {
+      showToast.dismiss();
+
       // Alerta Tostfy
-      alert('Digite o nome da tarefa!');
+      showToast.warn('Digite o nome da tarefa!');
       return;
     }
 
@@ -42,18 +47,17 @@ export function TaskForm() {
       type: nextCycleType,
     };
 
-    const secondsRemaining = newTask.duration * 60;
+    dispatch({ type: TaskActionTypes.START_TASK, payload: newTask });
 
-    setState(prev => {
-      return {
-        ...prev,
-        activeTask: newTask,
-        currentCycle: nextCycle,
-        secondsRemaining,
-        formattedSecondsRemaining: formatSecondsToMinutes(secondsRemaining),
-        tasks: [...prev.tasks, newTask],
-      };
-    });
+    showToast.dismiss();
+
+    showToast.success(`Task "${taskName}" iniciada com sucesso!`);
+  }
+
+  function handleInterruptTask() {
+    dispatch({ type: TaskActionTypes.INTERRUPT_TASK });
+
+    showToast.warn('Tarefa interrompida!');
   }
 
   return (
@@ -65,13 +69,13 @@ export function TaskForm() {
           placeholder='O que você vai fazer?'
           ref={taskInput}
           disabled={!!state.activeTask}
+          defaultValue={defaultValue}
+          autoFocus
         />
       </div>
 
       <div className={styles.formRow}>
-        <p>
-          Vamos <strong>concentrar</strong> em nossos objetivos!
-        </p>
+        <Tips />
       </div>
 
       <div className={styles.formRow}>
@@ -85,6 +89,7 @@ export function TaskForm() {
             title='Iniciar nova tarefa'
             type='submit'
             variant='primary'
+            key='submit'
           >
             <PlayCircle />
           </Button>
@@ -94,6 +99,8 @@ export function TaskForm() {
             title='Interromper tarefa'
             type='button'
             variant='destructive'
+            onClick={handleInterruptTask}
+            key='button'
           >
             <StopCircle />
           </Button>

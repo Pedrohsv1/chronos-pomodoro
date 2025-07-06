@@ -1,0 +1,84 @@
+.buttonIcon {
+  background-color: rgb(180, 36, 36);
+  color: var(--gray-100);
+  height: 3.6rem;
+  width: 3.6rem;
+  border: none;
+  border-radius: 0.4rem;
+
+  padding: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonIcon:hover {
+  background-color: var(--error);
+}
+
+.buttonIcon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.responsiveTable {
+  overflow-x: auto;
+  border-radius: 0.8rem;
+}
+
+.responsiveTable table {
+  width: 100%;
+  min-width: 64rem;
+  font-size: 1.6rem;
+  border-collapse: collapse;
+}
+
+.responsiveTable th {
+  background-color: var(--gray-600);
+}
+
+.responsiveTable td {
+  background-color: var(--gray-800);
+}
+
+.responsiveTable th,
+.responsiveTable td {
+  border-bottom: 0.2rem solid var(--gray-700);
+  text-align: left;
+  padding: 1.6rem;
+}
+
+.tag {
+  background-color: var(--gray-700);
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  font-size: 1.2rem;
+  margin-right: 0.4rem;
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.arrows svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.change div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+
+  transition: background-color 0.1s ease-in-out;
+}
+
+.change:hover {
+  cursor: pointer;
+  background-color: var(--gray-500);
+}

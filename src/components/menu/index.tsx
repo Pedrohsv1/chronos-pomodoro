@@ -10,11 +10,11 @@ export function Menu() {
       <LinkIcon href='/' aria-label='Go to home' title='Go to home'>
         <HomeIcon />
       </LinkIcon>
-      <LinkIcon href='' aria-label='See history' title='See history'>
+      <LinkIcon href='/history/' aria-label='See history' title='See history'>
         <HistoryIcon />
       </LinkIcon>
       <LinkIcon
-        href=''
+        href='/settings/'
         aria-label='Configure preferences'
         title='Configure preferences'
       >
