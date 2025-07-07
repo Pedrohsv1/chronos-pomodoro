@@ -62,7 +62,18 @@ export function taskReducer(state: TaskStateModel, action: TaskActionModel) {
     case TaskActionTypes.RESET_TASKS: {
       return { ...initialTaskState };
     }
+    case TaskActionTypes.CHANGE_CONFIG: {
+      const { worktime, shortbreaktime, longbreaktime } = action.payload;
+      return {
+        ...state,
+        config: {
+          ...state.config,
+          worktime,
+          shortbreaktime,
+          longbreaktime,
+        },
+      };
+    }
   }
-
   return state;
 }

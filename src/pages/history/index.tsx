@@ -45,7 +45,7 @@ export default function History() {
         description: 'Tem certeza que deseja limpar o histórico?',
       },
       confirmation => {
-        if (confirmation) {
+        if (!confirmation) {
           return;
         }
         dispatch({ type: TaskActionTypes.RESET_TASKS });

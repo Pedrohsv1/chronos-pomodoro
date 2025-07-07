@@ -16,7 +16,7 @@ export function Dialog({
 
         <div className={styles.buttonsContainer}>
           <Button
-            onClick={() => closeToast(true)}
+            onClick={() => closeToast(false)}
             aria-label='Confirmar ação e fechar'
             title='Confirmar ação e fechar'
           >
@@ -24,7 +24,7 @@ export function Dialog({
           </Button>
 
           <Button
-            onClick={() => closeToast(false)}
+            onClick={() => closeToast(true)}
             variant='destructive'
             aria-label='Cancelar ação e fechar'
             title='Cancelar ação e fechar'

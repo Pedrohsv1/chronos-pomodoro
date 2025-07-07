@@ -17,6 +17,8 @@
   color: var(--color-text);
 
   transition: all 0.1s ease-in-out;
+
+  -moz-appearance: textfield; /* For Firefox */
 }
 
 .input:focus {
@@ -36,4 +38,10 @@
 .input:placeholder-shown {
   color: var(--gray-500);
   font-style: italic;
+}
+
+.input::-webkit-inner-spin-button,
+.input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
