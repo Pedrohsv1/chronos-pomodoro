@@ -1,11 +1,10 @@
 .button {
-  width: 22rem;
   height: 4rem;
 
   border: none;
   border-radius: 1rem;
 
-  padding: 1rem;
+  padding: 2rem;
 
   display: flex;
   justify-content: center;

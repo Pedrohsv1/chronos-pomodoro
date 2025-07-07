@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  gap: 1.6rem;
+  text-align: center;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 1.6rem;
+}
+
+.buttonsContainer button {
+  min-width: auto;
+  margin: 0;
+}
+
+.buttonsContainer svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.description {
+  color: var(--gray-500);
+  font-size: 1.4rem;
+}
+
+.title {
+  color: var(--text-over-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}

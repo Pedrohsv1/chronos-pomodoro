@@ -1,10 +1,4 @@
-import {
-  ArrowDown,
-  ArrowUp,
-  ChevronDown,
-  ChevronUp,
-  Trash,
-} from 'lucide-react';
+import { ChevronDown, ChevronUp, Trash } from 'lucide-react';
 import { Container } from '../../components/container';
 import { Heading } from '../../components/heading';
 import { MainTemplate } from '../../templates/mainTemplate';
@@ -15,6 +9,9 @@ import { formatDate } from '../../utils/formatdate';
 import { getTaskStatus } from '../../utils/gettaskstatus';
 import { sortHistory, type sortHistoryType } from '../../utils/sortHistory';
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { showToast } from '../../adapters/showToast';
+import { Dialog } from '../../components/dialog';
 import { TaskActionTypes } from '../../contexts/taskcontext/taskAction';
 
 export default function History() {
@@ -41,10 +38,20 @@ export default function History() {
   }, [state.tasks]);
 
   function handleRemoveState() {
-    if (!confirm('Are you sure you want to clear the history?')) {
-      return;
-    }
-    dispatch({ type: TaskActionTypes.RESET_TASKS });
+    showToast.dismiss();
+    showToast.confirm(
+      {
+        title: 'Limpar Histórico',
+        description: 'Tem certeza que deseja limpar o histórico?',
+      },
+      confirmation => {
+        if (confirmation) {
+          return;
+        }
+        dispatch({ type: TaskActionTypes.RESET_TASKS });
+        showToast.success('History cleared successfully!');
+      },
+    );
   }
 
   function handleChangeSortTask({ field }: Pick<sortHistoryType, 'field'>) {
@@ -96,13 +103,15 @@ export default function History() {
                 >
                   <div>
                     <span>Tarefa</span>
-                    <span className={styles.arrows}>
-                      {sortTaskOptions.direction === 'asc' ? (
-                        <ChevronUp color='#000000' />
-                      ) : (
-                        <ChevronDown />
-                      )}
-                    </span>
+                    {sortTaskOptions.field === 'name' && (
+                      <span className={styles.arrows}>
+                        {sortTaskOptions.direction === 'asc' ? (
+                          <ChevronUp />
+                        ) : (
+                          <ChevronDown />
+                        )}
+                      </span>
+                    )}
                   </div>
                 </th>
                 <th
