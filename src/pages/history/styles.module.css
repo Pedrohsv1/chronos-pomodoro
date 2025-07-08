@@ -82,3 +82,10 @@
   cursor: pointer;
   background-color: var(--gray-500);
 }
+
+.paginationButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.6rem;
+}

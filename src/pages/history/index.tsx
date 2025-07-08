@@ -9,13 +9,16 @@ import { formatDate } from '../../utils/formatdate';
 import { getTaskStatus } from '../../utils/gettaskstatus';
 import { sortHistory, type sortHistoryType } from '../../utils/sortHistory';
 import { useEffect, useState } from 'react';
-import { toast } from 'react-toastify';
 import { showToast } from '../../adapters/showToast';
-import { Dialog } from '../../components/dialog';
 import { TaskActionTypes } from '../../contexts/taskcontext/taskAction';
+import { Button } from '../../components/button';
 
 export default function History() {
   const { state, dispatch } = useTaskContext();
+  const [pagination, setPagination] = useState({
+    page: 1,
+    pageSize: 10,
+  });
   const [sortTaskOptions, setSortTaskOptions] = useState<sortHistoryType>(
     () => {
       return {
@@ -153,31 +156,82 @@ export default function History() {
               </tr>
             </thead>
             <tbody>
-              {sortTaskOptions.tasks.map(task => {
-                const taskTypeDictionary = {
-                  worktime: 'Foco',
-                  shortbreaktime: 'Descanso curto',
-                  longbreaktime: 'Descanso longo',
-                };
+              {sortTaskOptions.tasks
+                .slice(pagination.page, pagination.pageSize)
+                .map(task => {
+                  const taskTypeDictionary = {
+                    worktime: 'Foco',
+                    shortbreaktime: 'Descanso curto',
+                    longbreaktime: 'Descanso longo',
+                  };
 
-                return (
-                  <tr key={task.id}>
-                    <td>{task.name}</td>
+                  return (
+                    <tr key={task.id}>
+                      <td>{task.name}</td>
 
-                    <td>{task.duration}min</td>
+                      <td>{task.duration}min</td>
 
-                    <td>{formatDate(task.startDate)}</td>
+                      <td>{formatDate(task.startDate)}</td>
 
-                    <td>
-                      <span className={styles.tag}>
-                        {getTaskStatus(task, state.activeTask)}
-                      </span>
-                    </td>
+                      <td>
+                        <span className={styles.tag}>
+                          {getTaskStatus(task, state.activeTask)}
+                        </span>
+                      </td>
 
-                    <td>{taskTypeDictionary[task.type]}</td>
-                  </tr>
-                );
-              })}
+                      <td>{taskTypeDictionary[task.type]}</td>
+                    </tr>
+                  );
+                })}
+              <tr>
+                <td>
+                  <span className={styles.pagination}>
+                    {pagination.page} /{' '}
+                    {Math.ceil(
+                      sortTaskOptions.tasks.length / pagination.pageSize,
+                    )}
+                  </span>
+                </td>
+                <td colSpan={4}>
+                  <div className={styles.paginationButtons}>
+                    <Button
+                      type='button'
+                      onClick={() =>
+                        setPagination(prev => ({
+                          ...prev,
+                          page: Math.max(prev.page - 1, 1),
+                        }))
+                      }
+                      disabled={pagination.page === 1}
+                    >
+                      Anterior
+                    </Button>
+                    <Button
+                      type='button'
+                      onClick={() =>
+                        setPagination(prev => ({
+                          ...prev,
+                          page: Math.min(
+                            prev.page + 1,
+                            Math.ceil(
+                              sortTaskOptions.tasks.length /
+                                pagination.pageSize,
+                            ),
+                          ),
+                        }))
+                      }
+                      disabled={
+                        pagination.page >=
+                        Math.ceil(
+                          sortTaskOptions.tasks.length / pagination.pageSize,
+                        )
+                      }
+                    >
+                      Próximo
+                    </Button>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
