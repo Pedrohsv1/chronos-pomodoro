@@ -14,6 +14,10 @@ import { TaskActionTypes } from '../../contexts/taskcontext/taskAction';
 import { Button } from '../../components/button';
 
 export default function History() {
+  useEffect(() => {
+    document.title = 'History | Chronos Pomodoro';
+  }, []);
+  
   const { state, dispatch } = useTaskContext();
   const [pagination, setPagination] = useState({
     page: 1,

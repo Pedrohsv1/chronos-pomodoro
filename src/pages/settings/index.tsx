@@ -4,12 +4,15 @@ import { Container } from '../../components/container';
 import { Heading } from '../../components/heading';
 import { DefaultInput } from '../../components/input';
 import { MainTemplate } from '../../templates/mainTemplate';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useTaskContext } from '../../contexts/taskcontext';
 import { TaskActionTypes } from '../../contexts/taskcontext/taskAction';
 import { showToast } from '../../adapters/showToast';
 
 export function SettingsPage() {
+  useEffect(() => {
+    document.title = 'Settings | Chronos Pomodoro';
+  }, []);
   const { state, dispatch } = useTaskContext();
   const workTimeRef = useRef<HTMLInputElement>(null);
   const shortBreakTimeRef = useRef<HTMLInputElement>(null);

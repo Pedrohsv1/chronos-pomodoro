@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Container } from '../../components/container';
 import { GenericHTML } from '../../components/genericHTML';
 import { Heading } from '../../components/heading';
@@ -5,6 +6,10 @@ import { RouterLink } from '../../components/routerLink';
 import { MainTemplate } from '../../templates/mainTemplate';
 
 export default function PomodoroAbout() {
+  useEffect(() => {
+    document.title = 'Pomodoro About | Chronos Pomodoro';
+  }, []);
+
   return (
     <MainTemplate>
       <Container>
